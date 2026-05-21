@@ -1,5 +1,5 @@
 Labirentten Kaçış 3D
-3 boyutlu, prosedürel labirent kaçış oyunu. Her oturumda farklı labirent, farklı deneyim.
+
 
 **OSTİM Teknik Üniversitesi | GRS 202 Sektörel Proje | 2025-2026**  
 **Geliştirici:** Mustafa Kaan Büyükbalcı — 240408477  
