@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://c1ypfgytpypyt"]
+
+[ext_resource type="Script" uid="uid://drpb2s0xlddc8" path="res://game_over.gd" id="1_y26ei"]
+
+[node name="GameOver" type="Control" unique_id=371882162]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0003719516
+script = ExtResource("1_y26ei")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1568979818]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.999256
+offset_top = 2.0007439
+offset_right = -1.9992676
+offset_bottom = 2.0007324
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1003335338]
+custom_minimum_size = Vector2(300, 0)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.00034240447
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=1016734203]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="VBoxContainer" unique_id=1258313777]
+layout_mode = 2
+
+[node name="MenuButton" type="Button" parent="VBoxContainer" unique_id=300199986]
+layout_mode = 2
+text = "MENÜYE DÖN
+"

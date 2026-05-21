@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dvv38ao785w7s"]
+
+[ext_resource type="PackedScene" uid="uid://dc6wflf161lg0" path="res://models/Model/characterMedium.fbx" id="1_yg311"]
+[ext_resource type="Texture2D" uid="uid://csnbs52i3j4r4" path="res://models/Skins/zombieMaleA.png" id="2_bgoim"]
+[ext_resource type="PackedScene" uid="uid://bdwxckuh80h4e" path="res://models/Animations/idle.fbx" id="3_bgoim"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obok0"]
+albedo_texture = ExtResource("2_bgoim")
+
+[node name="characterMedium" unique_id=1286630120 instance=ExtResource("1_yg311")]
+
+[node name="characterMedium" parent="Root/Skeleton3D" parent_id_path=PackedInt32Array(547963653) index="0" unique_id=1097472655]
+surface_material_override/0 = SubResource("StandardMaterial3D_obok0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Root/Skeleton3D" parent_id_path=PackedInt32Array(547963653) index="1" unique_id=290339619]
+
+[node name="idle" parent="Root/Skeleton3D/AnimationPlayer" index="0" unique_id=1325434621 instance=ExtResource("3_bgoim")]

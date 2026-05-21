@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://ce3334trnjntf"]
+
+[ext_resource type="Script" uid="uid://c4f8mfw6ee54c" path="res://settings.gd" id="1_x2hje"]
+
+[node name="Settings" type="Control" unique_id=2000687841]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x2hje")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1707578450]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -687.5
+offset_top = -410.5
+offset_right = 687.5
+offset_bottom = 410.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1584723, 0.15847233, 0.1584723, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2071878719]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -369.5
+offset_top = -171.0
+offset_right = 369.5
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=2140918469]
+layout_mode = 2
+text = "AYARLAR"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=966607990]
+layout_mode = 2
+text = "SES SEVİYESİ"
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer" unique_id=787761365]
+layout_mode = 2
+value = 80.0
+
+[node name="Label3" type="Label" parent="VBoxContainer" unique_id=237245526]
+layout_mode = 2
+text = "FARE HASSASİYETİ"
+
+[node name="SensSlider" type="HSlider" parent="VBoxContainer" unique_id=412241048]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 3.0
+
+[node name="Label4" type="Label" parent="VBoxContainer" unique_id=1200067577]
+layout_mode = 2
+text = "GRAFİK KALİTESİ"
+
+[node name="QualityOption" type="OptionButton" parent="VBoxContainer" unique_id=1251347715]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="VBoxContainer" unique_id=293393858]
+layout_mode = 2
+text = "Geri
+"

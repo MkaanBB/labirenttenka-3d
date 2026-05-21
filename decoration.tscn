@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://caauo2fhpbg0p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wyxmi"]
+albedo_color = Color(0, 0, 0, 1)
+heightmap_enabled = true
+heightmap_scale = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_tfd5r"]
+material = SubResource("StandardMaterial3D_wyxmi")
+radius = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_wyxmi"]
+radius = 0.4
+
+[node name="decoration" type="Node3D" unique_id=2089599030]
+visible = false
+
+[node name="Skull" type="MeshInstance3D" parent="." unique_id=263423269]
+visible = false
+mesh = SubResource("SphereMesh_tfd5r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Skull" unique_id=1016278369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 0.05, -0.13)
+visible = false
+mesh = SubResource("SphereMesh_wyxmi")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Skull" unique_id=1518736313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06, -0.05, 0.13)
+visible = false
+mesh = SubResource("SphereMesh_wyxmi")

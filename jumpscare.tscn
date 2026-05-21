@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dk80fmaoahdg0"]
+
+[ext_resource type="Script" uid="uid://dqe32kayikhnk" path="res://jumpscare.gd" id="1_lc0cw"]
+[ext_resource type="VideoStream" uid="uid://b3xxqx1bvfc51" path="res://jumpscare/jumpscare.ogv" id="2_dkw4f"]
+
+[node name="Jumpscare" type="Control" unique_id=642358406]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lc0cw")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1684288978]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_dkw4f")
+volume_db = 4.8599997
+speed_scale = 1.561

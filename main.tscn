@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://d36hd7iey8fcg"]
+
+[ext_resource type="Script" uid="uid://cden3lxcf31x4" path="res://player.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dqs58c82sgfny" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="Script" uid="uid://bsw7ebn16d5up" path="res://maze_generator.gd" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://f4r3dwpxqg02" path="res://exit.gd" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://deo5qrrebkf4k" path="res://flashlight.glb" id="4_1bvp3"]
+[ext_resource type="AudioStream" uid="uid://jyhtgtci8cb1" path="res://sounds/kalp.ogg" id="4_272bh"]
+[ext_resource type="AudioStream" uid="uid://6g57jbijw3po" path="res://sounds/music/Locked_Behind_Iron.mp3" id="6_7mycd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1bvp3"]
+radius = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
+albedo_color = Color(0.32156864, 0.36078432, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_272bh"]
+lightmap_size_hint = Vector2i(2, 0)
+material = SubResource("StandardMaterial3D_7mycd")
+outer_radius = 1.135
+
+[sub_resource type="LabelSettings" id="LabelSettings_272bh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5vw27"]
+
+[sub_resource type="Shader" id="Shader_7mycd"]
+code = "shader_type canvas_item;
+
+uniform float scanline_intensity : hint_range(0.0, 1.0) = 0.15;
+uniform float scanline_count : hint_range(100.0, 500.0) = 250.0;
+uniform float vignette_intensity : hint_range(0.0, 1.0) = 0.3;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+    
+    // Scanline efekti
+    float scanline = sin(UV.y * scanline_count) * 0.5 + 0.5;
+    color.rgb -= scanline * scanline_intensity;
+    
+    // Vignette (kenar karartma)
+    vec2 uv = UV * (1.0 - UV);
+    float vignette = uv.x * uv.y * 15.0;
+    vignette = pow(vignette, vignette_intensity);
+    color.rgb *= vignette;
+    
+    COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_272bh"]
+shader = SubResource("Shader_7mycd")
+shader_parameter/scanline_intensity = 0.15
+shader_parameter/scanline_count = 250.0
+shader_parameter/vignette_intensity = 0.3
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+background_mode = 1
+ambient_light_energy = 0.0
+fog_enabled = true
+fog_light_color = Color(0.21431234, 0.23589244, 0.2682631, 1)
+fog_light_energy = 0.7
+fog_density = 0.0154
+fog_sky_affect = 0.54
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_h2yge"]
+
+[node name="Node3D" type="Node3D" unique_id=270244660]
+script = ExtResource("1_lquwl")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=236513476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.271568, 2, 0)
+script = ExtResource("1_ig7tw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1234672997]
+shape = SubResource("CapsuleShape3D_0xm2m")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=283831080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="flashlight" parent="Player/Camera3D" unique_id=710788314 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(-1.09278474e-07, 1.8104297, 1.7240489, 0, 1.7240489, -1.8104297, -2.5, -7.91364e-08, -7.5360575e-08, 0.31250954, -0.38016987, -0.5730077)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player/Camera3D" unique_id=1237247383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.099999905, -0.3)
+light_color = Color(0.9843137, 0.95686275, 0.77254903, 1)
+light_energy = 1.039
+light_indirect_energy = 1.818
+light_volumetric_fog_energy = 11.499
+spot_range = 8.899
+spot_angle = 21.05
+spot_angle_attenuation = 2.378415
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=992019005]
+
+[node name="HeartBeat" type="AudioStreamPlayer" parent="Player" unique_id=521962588]
+stream = ExtResource("4_272bh")
+volume_db = 10.035
+parameters/looping = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1318074905]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 284.82306, 0)
+light_color = Color(0.003921569, 0, 0, 1)
+
+[node name="MazeGenerator" type="Node" parent="." unique_id=1192323903 groups=["maze_generator"]]
+script = ExtResource("2_0xm2m")
+
+[node name="Exit" type="Area3D" parent="." unique_id=131129964]
+script = ExtResource("3_h2yge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exit" unique_id=739076503]
+shape = SubResource("SphereShape3D_1bvp3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Exit" unique_id=1292725681]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("TorusMesh_272bh")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Exit" unique_id=1585584302]
+light_color = Color(0, 0.50781554, 0.44016388, 1)
+light_energy = 4.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1908666618]
+
+[node name="MarkerLabel" type="Label" parent="CanvasLayer" unique_id=638266713]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "İŞARET:3/3"
+horizontal_alignment = 2
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1227999327]
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 60.0
+offset_bottom = 73.0
+label_settings = SubResource("LabelSettings_272bh")
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=358495775]
+offset_left = 20.0
+offset_top = 80.0
+offset_right = 60.0
+offset_bottom = 103.0
+label_settings = SubResource("LabelSettings_5vw27")
+
+[node name="CRTEffect" type="ColorRect" parent="CanvasLayer" unique_id=1859271100]
+visible = false
+material = SubResource("ShaderMaterial_272bh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=173195726]
+environment = SubResource("Environment_h2yge")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1711014235]
+navigation_mesh = SubResource("NavigationMesh_h2yge")
+
+[node name="Music" type="AudioStreamPlayer3D" parent="." unique_id=935155554]
+stream = ExtResource("6_7mycd")
+autoplay = true
+parameters/looping = true

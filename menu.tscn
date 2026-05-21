@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://dtesrld5n0u8y"]
+
+[ext_resource type="Script" uid="uid://be6x1oyyxoi80" path="res://menu.gd" id="1_lti8b"]
+
+[sub_resource type="FontVariation" id="FontVariation_lti8b"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ouk20"]
+
+[node name="Menu" type="Control" unique_id=523135400]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lti8b")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=939869633]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1140287962]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModeButton" type="OptionButton" parent="VBoxContainer" unique_id=624732005]
+layout_mode = 2
+
+[node name="SeedLabel" type="Label" parent="VBoxContainer" unique_id=818502048]
+layout_mode = 2
+text = "SEED:"
+
+[node name="SeedInput" type="LineEdit" parent="VBoxContainer" unique_id=927099948]
+layout_mode = 2
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer" unique_id=511455169]
+layout_mode = 2
+text = "Yeni Oyun"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=1163535252]
+layout_mode = 2
+text = "Ayarlar
+"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=73709221]
+layout_mode = 2
+text = "Yapımcı"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1968250080]
+layout_mode = 2
+text = "Çıkış"
+
+[node name="WelcomeLabel" type="Label" parent="VBoxContainer" unique_id=1937882400]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=979741530]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -135.5
+offset_top = -65.0
+offset_right = 135.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "2026 MUSTAFA KAAN BÖYÜKBALCI 
+                      240408477"
+
+[node name="TitleLabel" type="Label" parent="." unique_id=97904589]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -450.0
+offset_right = 450.0
+offset_bottom = 114.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.21907826, 0.21907826, 0.21907826, 1)
+theme_override_fonts/font = SubResource("FontVariation_lti8b")
+theme_override_font_sizes/font_size = 82
+theme_override_styles/normal = SubResource("StyleBoxLine_ouk20")
+text = "LABİRENTTEN KAÇIŞ3D"
+horizontal_alignment = 3
+
+[node name="Label2" type="Label" parent="." unique_id=1386576737]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 21.0
+offset_top = -109.0
+offset_right = 355.0
+offset_bottom = 122.0
+grow_vertical = 2
+text = "🔄 Endless — Sonsuz mod. Level bitmez, ne kadar ilerlersen o kadar skor kazanırsın. Amaç en yüksek skoru yapmak.
+⚡ Sprint — 10 leveli en hızlı şekilde bitir. Jumpscare yok, sadece hız önemli. En kısa sürede bitiren kazanır.
+💀 Survival — Her levelde 2 dakikan var. Süre biterse oyun biter. Jumpscare daha sık çıkar, baskı altında oynarsın."
+vertical_alignment = 3
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="." unique_id=518684949]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -417.0
+offset_top = -141.5
+offset_bottom = 141.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Seed sistemi şöyle çalışır:
+Normalde labirent her seferinde tamamen rastgele üretilir. Ama bir seed numarası girersen, o numara rastgele sayı üreticisini belirli bir noktadan başlatır. Yani aynı seed = aynı rastgele sayı dizisi = aynı labirent.
+Örnek:
+
+Seed: 123 → labirent A şeklinde çıkar
+Seed: 123 → tekrar aynı labirent A çıkar
+Seed: 456 → farklı labirent B çıkar"
+autowrap_mode = 2

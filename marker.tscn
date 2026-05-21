@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dfwnct6ehlrbw"]
+
+[ext_resource type="Script" uid="uid://d0oh7b61gap2i" path="res://marker.gd" id="1_f37rb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_15koh"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mnpm0"]
+material = SubResource("StandardMaterial3D_15koh")
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.1
+
+[node name="Marker" type="Node3D" unique_id=1618347543]
+script = ExtResource("1_f37rb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1064880276]
+mesh = SubResource("CylinderMesh_mnpm0")

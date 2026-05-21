@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bgq64jv3kdc4t"]
+
+[ext_resource type="Script" uid="uid://bya2okn20hykh" path="res://enemy.gd" id="1_7k104"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7k104"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gyqm"]
+albedo_color = Color(0.14674811, 0.14674813, 0.14674813, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qi2p4"]
+material = SubResource("StandardMaterial3D_4gyqm")
+radius = 0.3
+height = 1.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iifgy"]
+albedo_color = Color(0.0972204, 0.09722034, 0.09722034, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_epg4t"]
+material = SubResource("StandardMaterial3D_iifgy")
+radius = 0.18
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3yqyl"]
+albedo_color = Color(0.972549, 0, 0, 1)
+emission_enabled = true
+emission_energy_multiplier = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_wujgv"]
+material = SubResource("StandardMaterial3D_3yqyl")
+radius = 0.2
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1402657943]
+visible = false
+script = ExtResource("1_7k104")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1670485238]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=346557212]
+shape = SubResource("CapsuleShape3D_7k104")
+
+[node name="Body" type="Node3D" parent="." unique_id=474881966]
+
+[node name="Torso" type="MeshInstance3D" parent="Body" unique_id=264381171]
+mesh = SubResource("CapsuleMesh_qi2p4")
+
+[node name="Head" type="MeshInstance3D" parent="Body" unique_id=2033182445]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+mesh = SubResource("SphereMesh_epg4t")
+
+[node name="LeftEye" type="MeshInstance3D" parent="Body" unique_id=476684605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08, 1.5, -0.22)
+mesh = SubResource("SphereMesh_wujgv")
+
+[node name="RightEye" type="MeshInstance3D" parent="Body" unique_id=980849975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08, 1.5, -0.22)
+mesh = SubResource("SphereMesh_wujgv")
