@@ -2,7 +2,7 @@ Labirentten Kaçış 3D
 
 
 **OSTİM Teknik Üniversitesi | GRS 202 Sektörel Proje | 2025-2026**  
-**Geliştirici:** Mustafa Kaan Büyükbalcı — 240408477  
+**Geliştirici:** Mustafa Kaan BÖYÜKBALCI — 240408477  
 **Danışman:** Furkan Aydın
 
 ---
